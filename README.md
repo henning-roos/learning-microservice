@@ -2,11 +2,10 @@
 Continuous learning project
 
 Links
-* https://www.keycloak.org/getting-started/getting-started-docker
-* https://pyoidc.readthedocs.io/en/latest/index.html
-* https://github.com/verdan/flaskoidc
+* https://www.altexsoft.com/blog/what-is-grpc/
+* https://grpc.io/docs/languages/python/quickstart/
+
 
 TODO
-* Create an application and talk to KeyCloak
-* Create a REST API
-* 
+* Follow the quickstart and pickout nuggets for our microservices
+* Create two apps that communicate via gRPC
