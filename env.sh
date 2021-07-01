@@ -1,0 +1,7 @@
+export FLASK_OIDC_PROVIDER_NAME="keycloak"
+export FLASK_OIDC_SCOPES="openid email profile"
+export FLASK_OIDC_USER_ID_FIELD="username"
+export FLASK_OIDC_CLIENT_ID="primary-application"
+export FLASK_OIDC_CLIENT_SECRET="69f03ffc-6ab2-4d82-9928-a2cf7ff78b5b"
+export FLASK_OIDC_REDIRECT_URI="/auth"
+export FLASK_OIDC_CONFIG_URL="https://localhost:8443/auth/realms/C-reX/.well-known/openid-configuration"
