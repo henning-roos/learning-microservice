@@ -10,15 +10,15 @@ import datetime_pb2
 import datetime_pb2_grpc
 
 
-class DateService(datetime_pb2_grpc.GreeterServicer):
+class DateService(datetime_pb2_grpc.DateServicer):
 
     def Date(self, request, context):
-        return datetime_pb2.DateReply(date=_get_date())
+        return datetime_pb2.DateReply(date=self._get_date())
 
     def _get_date(self):
         return datetime.date.today()
-        
-        
+
+
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     datetime_pb2_grpc.add_GreeterServicer_to_server(DateService(), server)

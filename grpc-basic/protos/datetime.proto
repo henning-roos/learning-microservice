@@ -16,10 +16,16 @@ syntax = "proto3";
 
 package datetime;
 
-// The greeting service definition.
+// The time service definition.
 service Time {
-  // Sends a greeting
-  rpc Time () returns (TimeReply) {}
+  // Sends a time request
+  rpc Time (TimeRequest) returns (TimeReply) {}
+}
+
+// The date service definition.
+service Date {
+  // Sends a date request
+  rpc Date (DateRequest) returns (DateReply) {}
 }
 
 // The response message containing the greetings
@@ -27,13 +33,15 @@ message TimeReply {
   string time = 1;
 }
 
-// The greeting service definition.
-service Date {
-  // Sends a greeting
-  rpc Date () returns (DateReply) {}
-}
-
 // The response message containing the greetings
 message DateReply {
   string date = 1;
+}
+
+message TimeRequest {
+
+}
+
+message DateRequest {
+
 }
