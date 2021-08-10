@@ -14,20 +14,26 @@
 
 syntax = "proto3";
 
-package message;
+package datetime;
 
 // The greeting service definition.
-service Message {
+service Time {
   // Sends a greeting
-  rpc Message (MessageRequest) returns (MessageReply) {}
-}
-
-// The request message containing the user's name.
-message MessageRequest {
-  string name = 1;
+  rpc Time () returns (TimeReply) {}
 }
 
 // The response message containing the greetings
-message MessageReply {
-  string message = 1;
+message TimeReply {
+  string time = 1;
+}
+
+// The greeting service definition.
+service Date {
+  // Sends a greeting
+  rpc Date () returns (DateReply) {}
+}
+
+// The response message containing the greetings
+message DateReply {
+  string date = 1;
 }
