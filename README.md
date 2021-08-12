@@ -6,7 +6,7 @@ Continuous learning project
 * https://grpc.io/docs/languages/python/quickstart/
 
 ## Current status
-Python microservice started and generated needed files(need to run it again). 
+Python microservice started and generated needed files(need to run it again).
 
 ## TODO
 * Create Go microservice
@@ -17,7 +17,7 @@ Python microservice started and generated needed files(need to run it again).
 
 Example for how to generate the protos
 ```bash
-python3 -m grpc.tools.protoc -I../protos --python_out=./grpc --grpc_python_out=./grpc ../protos/datetime.proto
+python3 -m grpc.tools.protoc -I../protos --python_out=./protos_generated_files --grpc_python_out=./protos_generated_files ../protos/datetime.proto
 
 ## Hello world
 python3 -m grpc.tools.protoc -I./ --python_out=. --grpc_python_out=. helloworld.proto
