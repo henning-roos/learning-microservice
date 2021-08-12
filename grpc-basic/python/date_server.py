@@ -6,8 +6,8 @@ import logging
 import datetime
 
 import grpc
-import datetime_pb2
-import datetime_pb2_grpc
+from interfaces import datetime_pb2
+from interfaces import datetime_pb2_grpc
 
 
 class DateService(datetime_pb2_grpc.DateServicer):
@@ -25,6 +25,12 @@ def serve():
     server.add_insecure_port('[::]:50051')
     server.start()
 
+    while True:
+        with grpc.insecure_channel('localhost:50051') as channel:
+            stub = datetime_pb2_grpc.TimeStub(channel)
+            response = stub.Time(datetime_pb2.TimeRequest())
+            print("Time received: " + response.time)
+        
     server.wait_for_termination()
 
 

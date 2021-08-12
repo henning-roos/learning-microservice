@@ -17,7 +17,8 @@ Python microservice started and generated needed files(need to run it again).
 
 Example for how to generate the protos
 ```bash
-python3 -m grpc.tools.protoc -I../protos --python_out=./protos_generated_files --grpc_python_out=./protos_generated_files ../protos/datetime.proto
+cd grpc-basic/python
+python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/datetime.proto
 
 ## Hello world
 python3 -m grpc.tools.protoc -I./ --python_out=. --grpc_python_out=. helloworld.proto
