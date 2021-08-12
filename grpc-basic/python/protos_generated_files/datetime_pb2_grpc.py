@@ -6,7 +6,7 @@ import datetime_pb2 as datetime__pb2
 
 
 class TimeStub(object):
-    """The greeting service definition.
+    """The time service definition.
     """
 
     def __init__(self, channel):
@@ -17,17 +17,17 @@ class TimeStub(object):
         """
         self.Time = channel.unary_unary(
                 '/datetime.Time/Time',
-                request_serializer=datetime__pb2.Empty.SerializeToString,
+                request_serializer=datetime__pb2.TimeRequest.SerializeToString,
                 response_deserializer=datetime__pb2.TimeReply.FromString,
                 )
 
 
 class TimeServicer(object):
-    """The greeting service definition.
+    """The time service definition.
     """
 
     def Time(self, request, context):
-        """Sends a greeting
+        """Sends a time request
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -38,7 +38,7 @@ def add_TimeServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Time': grpc.unary_unary_rpc_method_handler(
                     servicer.Time,
-                    request_deserializer=datetime__pb2.Empty.FromString,
+                    request_deserializer=datetime__pb2.TimeRequest.FromString,
                     response_serializer=datetime__pb2.TimeReply.SerializeToString,
             ),
     }
@@ -49,7 +49,7 @@ def add_TimeServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class Time(object):
-    """The greeting service definition.
+    """The time service definition.
     """
 
     @staticmethod
@@ -64,14 +64,14 @@ class Time(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/datetime.Time/Time',
-            datetime__pb2.Empty.SerializeToString,
+            datetime__pb2.TimeRequest.SerializeToString,
             datetime__pb2.TimeReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class DateStub(object):
-    """The greeting service definition.
+    """The date service definition.
     """
 
     def __init__(self, channel):
@@ -82,17 +82,17 @@ class DateStub(object):
         """
         self.Date = channel.unary_unary(
                 '/datetime.Date/Date',
-                request_serializer=datetime__pb2.Empty.SerializeToString,
+                request_serializer=datetime__pb2.DateRequest.SerializeToString,
                 response_deserializer=datetime__pb2.DateReply.FromString,
                 )
 
 
 class DateServicer(object):
-    """The greeting service definition.
+    """The date service definition.
     """
 
     def Date(self, request, context):
-        """Sends a greeting
+        """Sends a date request
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -103,7 +103,7 @@ def add_DateServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Date': grpc.unary_unary_rpc_method_handler(
                     servicer.Date,
-                    request_deserializer=datetime__pb2.Empty.FromString,
+                    request_deserializer=datetime__pb2.DateRequest.FromString,
                     response_serializer=datetime__pb2.DateReply.SerializeToString,
             ),
     }
@@ -114,7 +114,7 @@ def add_DateServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class Date(object):
-    """The greeting service definition.
+    """The date service definition.
     """
 
     @staticmethod
@@ -129,7 +129,7 @@ class Date(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/datetime.Date/Date',
-            datetime__pb2.Empty.SerializeToString,
+            datetime__pb2.DateRequest.SerializeToString,
             datetime__pb2.DateReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
