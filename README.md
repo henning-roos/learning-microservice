@@ -20,4 +20,9 @@ Example for how to generate the protos
 ```bash
 cd grpc-basic/python
 python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/datetime.proto
+
+cd grpc-basic/golang
+protoc --go_out=. --go_opt=paths=../protos \
+       --go-grpc_out=. --go-grpc_opt=paths=../protos \
+       ../protos/*/datetime.proto
 ```

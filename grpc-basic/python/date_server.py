@@ -26,7 +26,7 @@ def serve():
     server.start()
 
     while True:
-        with grpc.insecure_channel('localhost:50051') as channel:
+        with grpc.insecure_channel('localhost:50052') as channel:
             stub = datetime_pb2_grpc.TimeStub(channel)
             response = stub.Time(datetime_pb2.TimeRequest())
             print("Time received: " + response.time)
