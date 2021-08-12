@@ -8,20 +8,24 @@ Continuous learning project
 * https://grpc.io/docs/protoc-installation/#install-pre-compiled-binaries-any-os
 
 ## Current status
-Python microservice started and generated needed files(need to run it again).
+Python microservice completed.
+Golang proto files not generated successfully yet.
 
 ## TODO
-* Create Go microservice
+* Generate proto files for go
+* Use generated proto files in time_server.go
 * Follow the quickstart and pickout nuggets for our microservices
 * Create two apps that communicate via gRPC
 
 ## Commands
 
-Example for how to generate the protos
+How to generate the protos:
 ```bash
+# Generate python protos
 cd grpc-basic/python
 python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/datetime.proto
 
+# Testing different commands for golang protos generation - not working!
 cd grpc-basic/golang
 protoc -I../protos --go_out=. --go_opt=paths=source_relative \
        --go-grpc_out=. --go-grpc_opt=paths=source_relative \
