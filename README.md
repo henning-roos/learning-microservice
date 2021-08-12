@@ -4,6 +4,7 @@ Continuous learning project
 ## Links
 * https://www.altexsoft.com/blog/what-is-grpc/
 * https://grpc.io/docs/languages/python/quickstart/
+* https://github.com/grpc/grpc-go/tree/master/examples/helloworld
 
 ## Current status
 Python microservice started and generated needed files(need to run it again).
@@ -19,7 +20,4 @@ Example for how to generate the protos
 ```bash
 cd grpc-basic/python
 python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/datetime.proto
-
-## Hello world
-python3 -m grpc.tools.protoc -I./ --python_out=. --grpc_python_out=. helloworld.proto
 ```
