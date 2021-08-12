@@ -6,8 +6,8 @@ import logging
 import datetime
 
 import grpc
-from protos_generated_files import datetime_pb2
-from protos_generated_files import datetime_pb2_grpc
+import datetime_pb2
+import datetime_pb2_grpc
 
 
 class DateService(datetime_pb2_grpc.DateServicer):
@@ -21,7 +21,7 @@ class DateService(datetime_pb2_grpc.DateServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    datetime_pb2_grpc.add_GreeterServicer_to_server(DateService(), server)
+    datetime_pb2_grpc.add_DateServicer_to_server(DateService(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
 
