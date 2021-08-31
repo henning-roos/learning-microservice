@@ -70,7 +70,7 @@ python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../p
 
 ```
 
-### How to Generate the Protos for Python
+### How to Generate the Protos for Golang
 
 ```bash
 
