@@ -14,9 +14,9 @@ Golang proto files generated successfully.
 
 ## TODO
 
-* Use generated proto files in time_server.go
-* Follow the quickstart and pickout nuggets for our microservices
-* Create two apps that communicate via gRPC
+* Create a separate protos and purpose for the python microservice
+* Create a client in the python microservice
+* Error Handling
 
 ## Commands
 

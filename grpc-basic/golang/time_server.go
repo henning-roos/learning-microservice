@@ -20,6 +20,7 @@ type server struct {
 }
 
 func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+	log.Printf("received a Time request")
 	currentTime := time.Now().String()
 	return &pb.TimeReply{Time: currentTime}, nil
 }

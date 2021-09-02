@@ -4,6 +4,7 @@
 from concurrent import futures
 import logging
 import datetime
+import time
 
 import grpc
 from interfaces import datetime_pb2
@@ -30,6 +31,7 @@ def serve():
             stub = datetime_pb2_grpc.TimeStub(channel)
             response = stub.Time(datetime_pb2.TimeRequest())
             print("Time received: " + response.time)
+        time.sleep(1)
         
     server.wait_for_termination()
 
