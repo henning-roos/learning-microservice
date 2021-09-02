@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14interfaces/pet.proto\x12\x03pet\"Z\n\nPetRequest\x12\"\n\x04size\x18\x01 \x01(\x0e\x32\x14.pet.PetRequest.Size\"(\n\x04Size\x12\t\n\x05SMALL\x10\x00\x12\n\n\x06MEDIUM\x10\x01\x12\t\n\x05LARGE\x10\x02\",\n\x0bPetResponse\x12\x0f\n\x07petType\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\"\n\x0fPetSoundRequest\x12\x0f\n\x07petType\x18\x01 \x01(\t\"!\n\x10PetSoundResponse\x12\r\n\x05sound\x18\x01 \x01(\t27\n\x06GetPet\x12-\n\x06GetPet\x12\x0f.pet.PetRequest\x1a\x10.pet.PetResponse\"\x00\x32K\n\x0bGetPetSound\x12<\n\x0bGetPetSound\x12\x14.pet.PetSoundRequest\x1a\x15.pet.PetSoundResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x14interfaces/pet.proto\x12\x03pet\"Z\n\nPetRequest\x12\"\n\x04size\x18\x01 \x01(\x0e\x32\x14.pet.PetRequest.Size\"(\n\x04Size\x12\t\n\x05SMALL\x10\x00\x12\n\n\x06MEDIUM\x10\x01\x12\t\n\x05LARGE\x10\x02\",\n\x0bPetResponse\x12\x0f\n\x07petType\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\"\n\x0fPetSoundRequest\x12\x0f\n\x07petType\x18\x01 \x01(\t\"!\n\x10PetSoundResponse\x12\r\n\x05sound\x18\x01 \x01(\t2r\n\x03Pet\x12-\n\x06GetPet\x12\x0f.pet.PetRequest\x1a\x10.pet.PetResponse\"\x00\x12<\n\x0bGetPetSound\x12\x14.pet.PetSoundRequest\x1a\x15.pet.PetSoundResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -228,19 +228,19 @@ _sym_db.RegisterMessage(PetSoundResponse)
 
 
 
-_GETPET = _descriptor.ServiceDescriptor(
-  name='GetPet',
-  full_name='pet.GetPet',
+_PET = _descriptor.ServiceDescriptor(
+  name='Pet',
+  full_name='pet.Pet',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=238,
-  serialized_end=293,
+  serialized_end=352,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetPet',
-    full_name='pet.GetPet.GetPet',
+    full_name='pet.Pet.GetPet',
     index=0,
     containing_service=None,
     input_type=_PETREQUEST,
@@ -248,26 +248,10 @@ _GETPET = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
-])
-_sym_db.RegisterServiceDescriptor(_GETPET)
-
-DESCRIPTOR.services_by_name['GetPet'] = _GETPET
-
-
-_GETPETSOUND = _descriptor.ServiceDescriptor(
-  name='GetPetSound',
-  full_name='pet.GetPetSound',
-  file=DESCRIPTOR,
-  index=1,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=295,
-  serialized_end=370,
-  methods=[
   _descriptor.MethodDescriptor(
     name='GetPetSound',
-    full_name='pet.GetPetSound.GetPetSound',
-    index=0,
+    full_name='pet.Pet.GetPetSound',
+    index=1,
     containing_service=None,
     input_type=_PETSOUNDREQUEST,
     output_type=_PETSOUNDRESPONSE,
@@ -275,8 +259,8 @@ _GETPETSOUND = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_GETPETSOUND)
+_sym_db.RegisterServiceDescriptor(_PET)
 
-DESCRIPTOR.services_by_name['GetPetSound'] = _GETPETSOUND
+DESCRIPTOR.services_by_name['Pet'] = _PET
 
 # @@protoc_insertion_point(module_scope)

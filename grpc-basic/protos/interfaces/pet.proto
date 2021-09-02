@@ -2,11 +2,8 @@ syntax = "proto3";
 
 package pet;
 
-service GetPet {
+service Pet {
     rpc GetPet(PetRequest) returns (PetResponse){}
-}
-
-service GetPetSound {
     rpc GetPetSound(PetSoundRequest) returns (PetSoundResponse) {}
 }
 
