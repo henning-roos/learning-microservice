@@ -17,9 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='interfaces/datetime.proto',
   package='datetime',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z\013/interfaces',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2<\n\x04Time\x12\x34\n\x04Time\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x32<\n\x04\x44\x61te\x12\x34\n\x04\x44\x61te\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2<\n\x04Time\x12\x34\n\x04Time\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x32<\n\x04\x44\x61te\x12\x34\n\x04\x44\x61te\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x42\rZ\x0b/interfacesb\x06proto3'
 )
 
 
@@ -173,6 +173,7 @@ DateRequest = _reflection.GeneratedProtocolMessageType('DateRequest', (_message.
 _sym_db.RegisterMessage(DateRequest)
 
 
+DESCRIPTOR._options = None
 
 _TIME = _descriptor.ServiceDescriptor(
   name='Time',

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14interfaces/pet.proto\x12\x03pet\"Z\n\nPetRequest\x12\"\n\x04size\x18\x01 \x01(\x0e\x32\x14.pet.PetRequest.Size\"(\n\x04Size\x12\t\n\x05SMALL\x10\x00\x12\n\n\x06MEDIUM\x10\x01\x12\t\n\x05LARGE\x10\x02\")\n\x0bPetResponse\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x1f\n\x0fPetSoundRequest\x12\x0c\n\x04type\x18\x01 \x01(\t\"!\n\x10PetSoundResponse\x12\r\n\x05sound\x18\x01 \x01(\t27\n\x06GetPet\x12-\n\x06GetPet\x12\x0f.pet.PetRequest\x1a\x10.pet.PetResponse\"\x00\x32K\n\x0bGetPetSound\x12<\n\x0bGetPetSound\x12\x14.pet.PetSoundRequest\x1a\x15.pet.PetSoundResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x14interfaces/pet.proto\x12\x03pet\"Z\n\nPetRequest\x12\"\n\x04size\x18\x01 \x01(\x0e\x32\x14.pet.PetRequest.Size\"(\n\x04Size\x12\t\n\x05SMALL\x10\x00\x12\n\n\x06MEDIUM\x10\x01\x12\t\n\x05LARGE\x10\x02\",\n\x0bPetResponse\x12\x0f\n\x07petType\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\"\n\x0fPetSoundRequest\x12\x0f\n\x07petType\x18\x01 \x01(\t\"!\n\x10PetSoundResponse\x12\r\n\x05sound\x18\x01 \x01(\t27\n\x06GetPet\x12-\n\x06GetPet\x12\x0f.pet.PetRequest\x1a\x10.pet.PetResponse\"\x00\x32K\n\x0bGetPetSound\x12<\n\x0bGetPetSound\x12\x14.pet.PetSoundRequest\x1a\x15.pet.PetSoundResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -97,7 +97,7 @@ _PETRESPONSE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='type', full_name='pet.PetResponse.type', index=0,
+      name='petType', full_name='pet.PetResponse.petType', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -123,7 +123,7 @@ _PETRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=121,
-  serialized_end=162,
+  serialized_end=165,
 )
 
 
@@ -136,7 +136,7 @@ _PETSOUNDREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='type', full_name='pet.PetSoundRequest.type', index=0,
+      name='petType', full_name='pet.PetSoundRequest.petType', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -154,8 +154,8 @@ _PETSOUNDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=164,
-  serialized_end=195,
+  serialized_start=167,
+  serialized_end=201,
 )
 
 
@@ -186,8 +186,8 @@ _PETSOUNDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=197,
-  serialized_end=230,
+  serialized_start=203,
+  serialized_end=236,
 )
 
 _PETREQUEST.fields_by_name['size'].enum_type = _PETREQUEST_SIZE
@@ -235,8 +235,8 @@ _GETPET = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=232,
-  serialized_end=287,
+  serialized_start=238,
+  serialized_end=293,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetPet',
@@ -261,8 +261,8 @@ _GETPETSOUND = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=289,
-  serialized_end=364,
+  serialized_start=295,
+  serialized_end=370,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetPetSound',
