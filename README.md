@@ -67,6 +67,7 @@ cd grpc-basic/python
 
 # Generate protos
 python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/datetime.proto
+python3 -m grpc.tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/*/pet.proto
 
 ```
 
