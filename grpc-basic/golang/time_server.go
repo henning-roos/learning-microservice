@@ -12,20 +12,20 @@ import (
 )
 
 const (
-	port = ":50052"
+	host = "localhost:50052"
 )
 
 type server struct {
 	pb.UnimplementedTimeServer
 }
 
-func (s *server) TimeStamp(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
 	currentTime := time.Now().String()
 	return &pb.TimeReply{Time: currentTime}, nil
 }
 
 func main() {
-	lis, err := net.Listen("tcp", port)
+	lis, err := net.Listen("tcp", host)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

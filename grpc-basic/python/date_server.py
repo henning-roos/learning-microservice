@@ -22,7 +22,7 @@ class DateService(datetime_pb2_grpc.DateServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     datetime_pb2_grpc.add_DateServicer_to_server(DateService(), server)
-    server.add_insecure_port('[::]:50051')
+    server.add_insecure_port('localhost:50051')
     server.start()
 
     while True:
