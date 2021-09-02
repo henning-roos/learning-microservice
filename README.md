@@ -9,11 +9,11 @@ Continuous learning project
 * https://grpc.io/docs/protoc-installation/#install-pre-compiled-binaries-any-os
 
 ## Current status
-Python microservice completed.
-Golang proto files generated successfully.
+Pet client and Pet server is working.
 
 ## TODO
 
+* Change hardcoded values in Pet server
 * Create a separate protos and purpose for the python microservice
 * Create a client in the python microservice
 * Error Handling
