@@ -20,12 +20,12 @@ message PetRequest {
 }
 
 message PetResponse {
-    string type = 1;
+    string petType = 1;
     string name = 2;
 }
 
 message PetSoundRequest {
-    string type = 1;
+    string petType = 1;
 }
 
 message PetSoundResponse {

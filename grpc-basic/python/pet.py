@@ -10,18 +10,13 @@ from interfaces import pet_pb2_grpc
 
 
 class PetService(pet_pb2_grpc.GetPetServicer):
-    #TODO: replace names here
 
-    def Date(self, request, context):
-        return datetime_pb2.DateReply(date=self._get_date())
-
-    def _get_date(self):
-        return datetime.date.today()
-
+    def GetPet(self, request, context):
+        return pet_pb2.PetResponse(petType="hund", name="Hunden")
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    datetime_pb2_grpc.add_DateServicer_to_server(DateService(), server)
+    pet_pb2_grpc.add_GetPetServicer_to_server(PetService(), server)
     server.add_insecure_port('localhost:50053')
     server.start()
 
