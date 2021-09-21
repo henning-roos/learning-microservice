@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net"
 	"time"
@@ -21,14 +22,26 @@ type server struct {
 
 func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
 	log.Printf("received a Time request")
-	currentTime := time.Time.Clock() //TODO: change this
-	return &pb.TimeReply{Time: currentTime}, nil
+
+	currentTime := time.Now()
+	currentHour, currentMinutes, currentSeconds := currentTime.Clock()
+
+	// 14:45:32
+	clocktime := fmt.Sprintf("%d:%d:%d", currentHour, currentMinutes, currentSeconds)
+
+	return &pb.TimeReply{Time: clocktime}, nil
 }
 
 func (s *server) Date(ctx context.Context, in *pb.DateRequest) (*pb.DateReply, error) {
 	log.Printf("received a Date request")
-	currentTime := time.Now().String() //TODO: change this
-	return &pb.DateReply{Date: currentTime}, nil
+
+	currentTime := time.Now()
+	currentYear, currentMonth, currentDay := currentTime.Date()
+
+	// 2011-11-21
+	datetime := fmt.Sprintf("%d-%d-%d", currentYear, currentMonth, currentDay)
+
+	return &pb.DateReply{Date: datetime}, nil
 }
 
 func main() {
