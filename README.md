@@ -11,6 +11,10 @@ Continuous learning project
 ## Current status
 Pet client and Pet server is working.
 
+## Overview
+* The Python server handles Pet and the Golang server handles Time and Date.
+* The user interacts with the Python server and the Python server should make requests to the Golang server.
+
 ## TODO
 
 * Change hardcoded values in Pet server
@@ -38,8 +42,8 @@ source venv/bin/activate # in Linux
 # Install requirements
 pip install -r requirements.txt
 
-# Start date_server
-python ./date_server.py
+# Start pet.py
+python ./pet.py
 
 ```
 
@@ -52,10 +56,10 @@ Open a new terminal
 cd grpc-basic/golang
 
 # Build golang binary
-go build -o time_server
+go build -o date_time_server
 
-# Start time_server
-./time_server
+# Start date_time_server
+./date_time_server
 
 ```
 

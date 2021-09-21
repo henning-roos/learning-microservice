@@ -21,7 +21,7 @@ type server struct {
 
 func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
 	log.Printf("received a Time request")
-	currentTime := time.Now().String() //TODO: change this
+	currentTime := time.Time.Clock() //TODO: change this
 	return &pb.TimeReply{Time: currentTime}, nil
 }
 
