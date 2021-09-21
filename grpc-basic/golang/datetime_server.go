@@ -25,6 +25,12 @@ func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, e
 	return &pb.TimeReply{Time: currentTime}, nil
 }
 
+func (s *server) Date(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+	log.Printf("received a Date request")
+	currentTime := time.Now().String()
+	return &pb.TimeReply{Time: currentTime}, nil
+}
+
 func main() {
 	lis, err := net.Listen("tcp", host)
 	if err != nil {
