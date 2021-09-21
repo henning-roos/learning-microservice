@@ -8,12 +8,9 @@ Continuous learning project
 * https://github.com/grpc/grpc-go/tree/master/examples/helloworld
 * https://grpc.io/docs/protoc-installation/#install-pre-compiled-binaries-any-os
 
-## Current status
-Pet client and Pet server is working.
-
 ## Overview
 * The Python server handles Pet and the Golang server handles Time and Date.
-* The user interacts with the Python server and the Python server should make requests to the Golang server.
+* The user interacts with the Python server and the Python server makes requests to the Golang server.
 
 ## TODO
 
@@ -21,6 +18,8 @@ Pet client and Pet server is working.
 * Create a client in the python microservice
 * Error Handling
 * Split server and client in python pet.py
+* Fix logging in pet.py
+* Make pet_client.py interactive
 
 ## Commands
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\013/interfaces',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2v\n\x08\x44\x61teTime\x12\x34\n\x04Time\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x12\x34\n\x04\x44\x61te\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x42\rZ\x0b/interfacesb\x06proto3'
+  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2|\n\x08\x44\x61teTime\x12\x37\n\x07GetTime\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x12\x37\n\x07GetDate\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x42\rZ\x0b/interfacesb\x06proto3'
 )
 
 
@@ -183,11 +183,11 @@ _DATETIME = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=123,
-  serialized_end=241,
+  serialized_end=247,
   methods=[
   _descriptor.MethodDescriptor(
-    name='Time',
-    full_name='datetime.DateTime.Time',
+    name='GetTime',
+    full_name='datetime.DateTime.GetTime',
     index=0,
     containing_service=None,
     input_type=_TIMEREQUEST,
@@ -196,8 +196,8 @@ _DATETIME = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='Date',
-    full_name='datetime.DateTime.Date',
+    name='GetDate',
+    full_name='datetime.DateTime.GetDate',
     index=1,
     containing_service=None,
     input_type=_DATEREQUEST,

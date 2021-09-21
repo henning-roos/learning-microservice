@@ -7,8 +7,8 @@ option go_package = "/interfaces";
 
 // The datetime service definition.
 service DateTime {
-  rpc Time (TimeRequest) returns (TimeReply) {}
-  rpc Date (DateRequest) returns (DateReply) {}
+  rpc GetTime (TimeRequest) returns (TimeReply) {}
+  rpc GetDate (DateRequest) returns (DateReply) {}
 }
 
 // The response message containing the greetings

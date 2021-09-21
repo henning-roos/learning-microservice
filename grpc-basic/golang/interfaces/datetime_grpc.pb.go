@@ -18,8 +18,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DateTimeClient interface {
-	Time(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error)
-	Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error)
+	GetTime(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error)
+	GetDate(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error)
 }
 
 type dateTimeClient struct {
@@ -30,18 +30,18 @@ func NewDateTimeClient(cc grpc.ClientConnInterface) DateTimeClient {
 	return &dateTimeClient{cc}
 }
 
-func (c *dateTimeClient) Time(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error) {
+func (c *dateTimeClient) GetTime(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error) {
 	out := new(TimeReply)
-	err := c.cc.Invoke(ctx, "/datetime.DateTime/Time", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/datetime.DateTime/GetTime", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *dateTimeClient) Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error) {
+func (c *dateTimeClient) GetDate(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error) {
 	out := new(DateReply)
-	err := c.cc.Invoke(ctx, "/datetime.DateTime/Date", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/datetime.DateTime/GetDate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,8 +52,8 @@ func (c *dateTimeClient) Date(ctx context.Context, in *DateRequest, opts ...grpc
 // All implementations must embed UnimplementedDateTimeServer
 // for forward compatibility
 type DateTimeServer interface {
-	Time(context.Context, *TimeRequest) (*TimeReply, error)
-	Date(context.Context, *DateRequest) (*DateReply, error)
+	GetTime(context.Context, *TimeRequest) (*TimeReply, error)
+	GetDate(context.Context, *DateRequest) (*DateReply, error)
 	mustEmbedUnimplementedDateTimeServer()
 }
 
@@ -61,11 +61,11 @@ type DateTimeServer interface {
 type UnimplementedDateTimeServer struct {
 }
 
-func (UnimplementedDateTimeServer) Time(context.Context, *TimeRequest) (*TimeReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Time not implemented")
+func (UnimplementedDateTimeServer) GetTime(context.Context, *TimeRequest) (*TimeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTime not implemented")
 }
-func (UnimplementedDateTimeServer) Date(context.Context, *DateRequest) (*DateReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Date not implemented")
+func (UnimplementedDateTimeServer) GetDate(context.Context, *DateRequest) (*DateReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDate not implemented")
 }
 func (UnimplementedDateTimeServer) mustEmbedUnimplementedDateTimeServer() {}
 
@@ -80,38 +80,38 @@ func RegisterDateTimeServer(s grpc.ServiceRegistrar, srv DateTimeServer) {
 	s.RegisterService(&DateTime_ServiceDesc, srv)
 }
 
-func _DateTime_Time_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DateTime_GetTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TimeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DateTimeServer).Time(ctx, in)
+		return srv.(DateTimeServer).GetTime(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datetime.DateTime/Time",
+		FullMethod: "/datetime.DateTime/GetTime",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DateTimeServer).Time(ctx, req.(*TimeRequest))
+		return srv.(DateTimeServer).GetTime(ctx, req.(*TimeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DateTime_Date_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DateTime_GetDate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DateTimeServer).Date(ctx, in)
+		return srv.(DateTimeServer).GetDate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datetime.DateTime/Date",
+		FullMethod: "/datetime.DateTime/GetDate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DateTimeServer).Date(ctx, req.(*DateRequest))
+		return srv.(DateTimeServer).GetDate(ctx, req.(*DateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -124,12 +124,12 @@ var DateTime_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*DateTimeServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Time",
-			Handler:    _DateTime_Time_Handler,
+			MethodName: "GetTime",
+			Handler:    _DateTime_GetTime_Handler,
 		},
 		{
-			MethodName: "Date",
-			Handler:    _DateTime_Date_Handler,
+			MethodName: "GetDate",
+			Handler:    _DateTime_GetDate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

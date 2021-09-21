@@ -20,7 +20,7 @@ type server struct {
 	pb.UnimplementedDateTimeServer
 }
 
-func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+func (s *server) GetTime(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
 	log.Printf("received a Time request")
 
 	currentTime := time.Now()
@@ -32,7 +32,7 @@ func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, e
 	return &pb.TimeReply{Time: clocktime}, nil
 }
 
-func (s *server) Date(ctx context.Context, in *pb.DateRequest) (*pb.DateReply, error) {
+func (s *server) GetDate(ctx context.Context, in *pb.DateRequest) (*pb.DateReply, error) {
 	log.Printf("received a Date request")
 
 	currentTime := time.Now()

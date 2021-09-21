@@ -9,8 +9,8 @@ from interfaces import pet_pb2_grpc, datetime_pb2_grpc
 class PetService(pet_pb2_grpc.PetServicer):
 
     def GetPet(self, request, context):
-        with grpc.insecure_channel('localhost:50053') as channel:
-            stub = datetime_pb2_grpc.TimeStub(channel)
+        with grpc.insecure_channel('localhost:50052') as channel:
+            stub = datetime_pb2_grpc.DateTimeStub(channel)
             response = stub.GetTime(datetime_pb2.TimeRequest())
             # fix logging
             logging.info(response)

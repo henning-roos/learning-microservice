@@ -15,13 +15,13 @@ class DateTimeStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Time = channel.unary_unary(
-                '/datetime.DateTime/Time',
+        self.GetTime = channel.unary_unary(
+                '/datetime.DateTime/GetTime',
                 request_serializer=interfaces_dot_datetime__pb2.TimeRequest.SerializeToString,
                 response_deserializer=interfaces_dot_datetime__pb2.TimeReply.FromString,
                 )
-        self.Date = channel.unary_unary(
-                '/datetime.DateTime/Date',
+        self.GetDate = channel.unary_unary(
+                '/datetime.DateTime/GetDate',
                 request_serializer=interfaces_dot_datetime__pb2.DateRequest.SerializeToString,
                 response_deserializer=interfaces_dot_datetime__pb2.DateReply.FromString,
                 )
@@ -31,13 +31,13 @@ class DateTimeServicer(object):
     """The datetime service definition.
     """
 
-    def Time(self, request, context):
+    def GetTime(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Date(self, request, context):
+    def GetDate(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -46,13 +46,13 @@ class DateTimeServicer(object):
 
 def add_DateTimeServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Time': grpc.unary_unary_rpc_method_handler(
-                    servicer.Time,
+            'GetTime': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTime,
                     request_deserializer=interfaces_dot_datetime__pb2.TimeRequest.FromString,
                     response_serializer=interfaces_dot_datetime__pb2.TimeReply.SerializeToString,
             ),
-            'Date': grpc.unary_unary_rpc_method_handler(
-                    servicer.Date,
+            'GetDate': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDate,
                     request_deserializer=interfaces_dot_datetime__pb2.DateRequest.FromString,
                     response_serializer=interfaces_dot_datetime__pb2.DateReply.SerializeToString,
             ),
@@ -68,7 +68,7 @@ class DateTime(object):
     """
 
     @staticmethod
-    def Time(request,
+    def GetTime(request,
             target,
             options=(),
             channel_credentials=None,
@@ -78,14 +78,14 @@ class DateTime(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/Time',
+        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/GetTime',
             interfaces_dot_datetime__pb2.TimeRequest.SerializeToString,
             interfaces_dot_datetime__pb2.TimeReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Date(request,
+    def GetDate(request,
             target,
             options=(),
             channel_credentials=None,
@@ -95,7 +95,7 @@ class DateTime(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/Date',
+        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/GetDate',
             interfaces_dot_datetime__pb2.DateRequest.SerializeToString,
             interfaces_dot_datetime__pb2.DateReply.FromString,
             options, channel_credentials,
