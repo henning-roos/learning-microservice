@@ -18,9 +18,9 @@ Pet client and Pet server is working.
 ## TODO
 
 * Change hardcoded values in Pet server
-* Create a separate protos and purpose for the python microservice
 * Create a client in the python microservice
 * Error Handling
+* Split server and client in python pet.py
 
 ## Commands
 
