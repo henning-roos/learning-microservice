@@ -14,176 +14,122 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// TimeClient is the client API for Time service.
+// DateTimeClient is the client API for DateTime service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type TimeClient interface {
-	// Sends a time request
+type DateTimeClient interface {
 	Time(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error)
+	Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error)
 }
 
-type timeClient struct {
+type dateTimeClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewTimeClient(cc grpc.ClientConnInterface) TimeClient {
-	return &timeClient{cc}
+func NewDateTimeClient(cc grpc.ClientConnInterface) DateTimeClient {
+	return &dateTimeClient{cc}
 }
 
-func (c *timeClient) Time(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error) {
+func (c *dateTimeClient) Time(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error) {
 	out := new(TimeReply)
-	err := c.cc.Invoke(ctx, "/datetime.Time/Time", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/datetime.DateTime/Time", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// TimeServer is the server API for Time service.
-// All implementations must embed UnimplementedTimeServer
+func (c *dateTimeClient) Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error) {
+	out := new(DateReply)
+	err := c.cc.Invoke(ctx, "/datetime.DateTime/Date", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// DateTimeServer is the server API for DateTime service.
+// All implementations must embed UnimplementedDateTimeServer
 // for forward compatibility
-type TimeServer interface {
-	// Sends a time request
+type DateTimeServer interface {
 	Time(context.Context, *TimeRequest) (*TimeReply, error)
-	mustEmbedUnimplementedTimeServer()
+	Date(context.Context, *DateRequest) (*DateReply, error)
+	mustEmbedUnimplementedDateTimeServer()
 }
 
-// UnimplementedTimeServer must be embedded to have forward compatible implementations.
-type UnimplementedTimeServer struct {
+// UnimplementedDateTimeServer must be embedded to have forward compatible implementations.
+type UnimplementedDateTimeServer struct {
 }
 
-func (UnimplementedTimeServer) Time(context.Context, *TimeRequest) (*TimeReply, error) {
+func (UnimplementedDateTimeServer) Time(context.Context, *TimeRequest) (*TimeReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Time not implemented")
 }
-func (UnimplementedTimeServer) mustEmbedUnimplementedTimeServer() {}
+func (UnimplementedDateTimeServer) Date(context.Context, *DateRequest) (*DateReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Date not implemented")
+}
+func (UnimplementedDateTimeServer) mustEmbedUnimplementedDateTimeServer() {}
 
-// UnsafeTimeServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to TimeServer will
+// UnsafeDateTimeServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to DateTimeServer will
 // result in compilation errors.
-type UnsafeTimeServer interface {
-	mustEmbedUnimplementedTimeServer()
+type UnsafeDateTimeServer interface {
+	mustEmbedUnimplementedDateTimeServer()
 }
 
-func RegisterTimeServer(s grpc.ServiceRegistrar, srv TimeServer) {
-	s.RegisterService(&Time_ServiceDesc, srv)
+func RegisterDateTimeServer(s grpc.ServiceRegistrar, srv DateTimeServer) {
+	s.RegisterService(&DateTime_ServiceDesc, srv)
 }
 
-func _Time_Time_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DateTime_Time_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TimeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TimeServer).Time(ctx, in)
+		return srv.(DateTimeServer).Time(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datetime.Time/Time",
+		FullMethod: "/datetime.DateTime/Time",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TimeServer).Time(ctx, req.(*TimeRequest))
+		return srv.(DateTimeServer).Time(ctx, req.(*TimeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Time_ServiceDesc is the grpc.ServiceDesc for Time service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var Time_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "datetime.Time",
-	HandlerType: (*TimeServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Time",
-			Handler:    _Time_Time_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "interfaces/datetime.proto",
-}
-
-// DateClient is the client API for Date service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type DateClient interface {
-	// Sends a date request
-	Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error)
-}
-
-type dateClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewDateClient(cc grpc.ClientConnInterface) DateClient {
-	return &dateClient{cc}
-}
-
-func (c *dateClient) Date(ctx context.Context, in *DateRequest, opts ...grpc.CallOption) (*DateReply, error) {
-	out := new(DateReply)
-	err := c.cc.Invoke(ctx, "/datetime.Date/Date", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// DateServer is the server API for Date service.
-// All implementations must embed UnimplementedDateServer
-// for forward compatibility
-type DateServer interface {
-	// Sends a date request
-	Date(context.Context, *DateRequest) (*DateReply, error)
-	mustEmbedUnimplementedDateServer()
-}
-
-// UnimplementedDateServer must be embedded to have forward compatible implementations.
-type UnimplementedDateServer struct {
-}
-
-func (UnimplementedDateServer) Date(context.Context, *DateRequest) (*DateReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Date not implemented")
-}
-func (UnimplementedDateServer) mustEmbedUnimplementedDateServer() {}
-
-// UnsafeDateServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to DateServer will
-// result in compilation errors.
-type UnsafeDateServer interface {
-	mustEmbedUnimplementedDateServer()
-}
-
-func RegisterDateServer(s grpc.ServiceRegistrar, srv DateServer) {
-	s.RegisterService(&Date_ServiceDesc, srv)
-}
-
-func _Date_Date_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DateTime_Date_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DateServer).Date(ctx, in)
+		return srv.(DateTimeServer).Date(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datetime.Date/Date",
+		FullMethod: "/datetime.DateTime/Date",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DateServer).Date(ctx, req.(*DateRequest))
+		return srv.(DateTimeServer).Date(ctx, req.(*DateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Date_ServiceDesc is the grpc.ServiceDesc for Date service.
+// DateTime_ServiceDesc is the grpc.ServiceDesc for DateTime service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Date_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "datetime.Date",
-	HandlerType: (*DateServer)(nil),
+var DateTime_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "datetime.DateTime",
+	HandlerType: (*DateTimeServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "Time",
+			Handler:    _DateTime_Time_Handler,
+		},
+		{
 			MethodName: "Date",
-			Handler:    _Date_Date_Handler,
+			Handler:    _DateTime_Date_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

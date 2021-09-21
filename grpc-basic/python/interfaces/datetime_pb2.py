@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\013/interfaces',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2<\n\x04Time\x12\x34\n\x04Time\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x32<\n\x04\x44\x61te\x12\x34\n\x04\x44\x61te\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x42\rZ\x0b/interfacesb\x06proto3'
+  serialized_pb=b'\n\x19interfaces/datetime.proto\x12\x08\x64\x61tetime\"\x19\n\tTimeReply\x12\x0c\n\x04time\x18\x01 \x01(\t\"\x19\n\tDateReply\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"\r\n\x0bTimeRequest\"\r\n\x0b\x44\x61teRequest2v\n\x08\x44\x61teTime\x12\x34\n\x04Time\x12\x15.datetime.TimeRequest\x1a\x13.datetime.TimeReply\"\x00\x12\x34\n\x04\x44\x61te\x12\x15.datetime.DateRequest\x1a\x13.datetime.DateReply\"\x00\x42\rZ\x0b/interfacesb\x06proto3'
 )
 
 
@@ -175,19 +175,19 @@ _sym_db.RegisterMessage(DateRequest)
 
 DESCRIPTOR._options = None
 
-_TIME = _descriptor.ServiceDescriptor(
-  name='Time',
-  full_name='datetime.Time',
+_DATETIME = _descriptor.ServiceDescriptor(
+  name='DateTime',
+  full_name='datetime.DateTime',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=123,
-  serialized_end=183,
+  serialized_end=241,
   methods=[
   _descriptor.MethodDescriptor(
     name='Time',
-    full_name='datetime.Time.Time',
+    full_name='datetime.DateTime.Time',
     index=0,
     containing_service=None,
     input_type=_TIMEREQUEST,
@@ -195,26 +195,10 @@ _TIME = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
-])
-_sym_db.RegisterServiceDescriptor(_TIME)
-
-DESCRIPTOR.services_by_name['Time'] = _TIME
-
-
-_DATE = _descriptor.ServiceDescriptor(
-  name='Date',
-  full_name='datetime.Date',
-  file=DESCRIPTOR,
-  index=1,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=185,
-  serialized_end=245,
-  methods=[
   _descriptor.MethodDescriptor(
     name='Date',
-    full_name='datetime.Date.Date',
-    index=0,
+    full_name='datetime.DateTime.Date',
+    index=1,
     containing_service=None,
     input_type=_DATEREQUEST,
     output_type=_DATEREPLY,
@@ -222,8 +206,8 @@ _DATE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_DATE)
+_sym_db.RegisterServiceDescriptor(_DATETIME)
 
-DESCRIPTOR.services_by_name['Date'] = _DATE
+DESCRIPTOR.services_by_name['DateTime'] = _DATETIME
 
 # @@protoc_insertion_point(module_scope)

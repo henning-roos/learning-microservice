@@ -16,19 +16,19 @@ const (
 )
 
 type server struct {
-	pb.UnimplementedTimeServer
+	pb.UnimplementedDateTimeServer
 }
 
 func (s *server) Time(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
 	log.Printf("received a Time request")
-	currentTime := time.Now().String()
+	currentTime := time.Now().String() //TODO: change this
 	return &pb.TimeReply{Time: currentTime}, nil
 }
 
-func (s *server) Date(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+func (s *server) Date(ctx context.Context, in *pb.DateRequest) (*pb.DateReply, error) {
 	log.Printf("received a Date request")
-	currentTime := time.Now().String()
-	return &pb.TimeReply{Time: currentTime}, nil
+	currentTime := time.Now().String() //TODO: change this
+	return &pb.DateReply{Date: currentTime}, nil
 }
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterTimeServer(s, &server{})
+	pb.RegisterDateTimeServer(s, &server{})
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

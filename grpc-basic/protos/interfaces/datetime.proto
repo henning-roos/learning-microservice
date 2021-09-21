@@ -5,15 +5,9 @@ package datetime;
 // Where the generated golang files are placed
 option go_package = "/interfaces";
 
-// The time service definition.
-service Time {
-  // Sends a time request
+// The datetime service definition.
+service DateTime {
   rpc Time (TimeRequest) returns (TimeReply) {}
-}
-
-// The date service definition.
-service Date {
-  // Sends a date request
   rpc Date (DateRequest) returns (DateReply) {}
 }
 

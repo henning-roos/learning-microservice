@@ -5,8 +5,8 @@ import grpc
 from interfaces import datetime_pb2 as interfaces_dot_datetime__pb2
 
 
-class TimeStub(object):
-    """The time service definition.
+class DateTimeStub(object):
+    """The datetime service definition.
     """
 
     def __init__(self, channel):
@@ -16,40 +16,55 @@ class TimeStub(object):
             channel: A grpc.Channel.
         """
         self.Time = channel.unary_unary(
-                '/datetime.Time/Time',
+                '/datetime.DateTime/Time',
                 request_serializer=interfaces_dot_datetime__pb2.TimeRequest.SerializeToString,
                 response_deserializer=interfaces_dot_datetime__pb2.TimeReply.FromString,
                 )
+        self.Date = channel.unary_unary(
+                '/datetime.DateTime/Date',
+                request_serializer=interfaces_dot_datetime__pb2.DateRequest.SerializeToString,
+                response_deserializer=interfaces_dot_datetime__pb2.DateReply.FromString,
+                )
 
 
-class TimeServicer(object):
-    """The time service definition.
+class DateTimeServicer(object):
+    """The datetime service definition.
     """
 
     def Time(self, request, context):
-        """Sends a time request
-        """
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Date(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_TimeServicer_to_server(servicer, server):
+def add_DateTimeServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Time': grpc.unary_unary_rpc_method_handler(
                     servicer.Time,
                     request_deserializer=interfaces_dot_datetime__pb2.TimeRequest.FromString,
                     response_serializer=interfaces_dot_datetime__pb2.TimeReply.SerializeToString,
             ),
+            'Date': grpc.unary_unary_rpc_method_handler(
+                    servicer.Date,
+                    request_deserializer=interfaces_dot_datetime__pb2.DateRequest.FromString,
+                    response_serializer=interfaces_dot_datetime__pb2.DateReply.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'datetime.Time', rpc_method_handlers)
+            'datetime.DateTime', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Time(object):
-    """The time service definition.
+class DateTime(object):
+    """The datetime service definition.
     """
 
     @staticmethod
@@ -63,59 +78,11 @@ class Time(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/datetime.Time/Time',
+        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/Time',
             interfaces_dot_datetime__pb2.TimeRequest.SerializeToString,
             interfaces_dot_datetime__pb2.TimeReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-
-class DateStub(object):
-    """The date service definition.
-    """
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.Date = channel.unary_unary(
-                '/datetime.Date/Date',
-                request_serializer=interfaces_dot_datetime__pb2.DateRequest.SerializeToString,
-                response_deserializer=interfaces_dot_datetime__pb2.DateReply.FromString,
-                )
-
-
-class DateServicer(object):
-    """The date service definition.
-    """
-
-    def Date(self, request, context):
-        """Sends a date request
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_DateServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'Date': grpc.unary_unary_rpc_method_handler(
-                    servicer.Date,
-                    request_deserializer=interfaces_dot_datetime__pb2.DateRequest.FromString,
-                    response_serializer=interfaces_dot_datetime__pb2.DateReply.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'datetime.Date', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class Date(object):
-    """The date service definition.
-    """
 
     @staticmethod
     def Date(request,
@@ -128,7 +95,7 @@ class Date(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/datetime.Date/Date',
+        return grpc.experimental.unary_unary(request, target, '/datetime.DateTime/Date',
             interfaces_dot_datetime__pb2.DateRequest.SerializeToString,
             interfaces_dot_datetime__pb2.DateReply.FromString,
             options, channel_credentials,
