@@ -12,14 +12,17 @@ LOGGER = logging.getLogger("main")
 class PetService(pet_pb2_grpc.PetServicer):
 
     def GetPet(self, request, context):
-        getTime()
-        return pet_pb2.PetResponse(petType="hund", name="Karo")
+        _print_time()
+        if request.size == pet_pb2.PetRequest.Size.SMALL:
+            return pet_pb2.PetResponse(petType="hund", name="Karo")
+        else:
+            LOGGER.warning(f"Unsupported size: {request.size}!")
     
     def GetPetSound(self, request, context):
-        getTime()
+        _print_time()
         return pet_pb2.PetSoundResponse(sound="Vof")
 
-def getTime():
+def _print_time():
     with grpc.insecure_channel('localhost:50052') as channel:
         stub = datetime_pb2_grpc.DateTimeStub(channel)
         response = stub.GetTime(datetime_pb2.TimeRequest())
