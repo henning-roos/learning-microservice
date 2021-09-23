@@ -41,7 +41,7 @@ source venv/bin/activate # in Linux
 pip install -r requirements.txt
 
 # Start pet.py
-python ./pet.py
+python ./pet_server.py
 
 ```
 
