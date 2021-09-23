@@ -14,7 +14,10 @@ class PetService(pet_pb2_grpc.PetServicer):
     def GetPet(self, request, context):
         _print_time()
         if request.size == pet_pb2.PetRequest.Size.SMALL:
-            LOGGER.info(f"Received size {request.size}")
+            LOGGER.info(f"Received size 1 {request.DESCRIPTOR.enum_values_by_name['SMALL'].name}")
+            LOGGER.info(f"Received size 2 {pet_pb2.PetRequest.Size.DESCRIPTOR.enum_types_by_number[request.size].name}")
+            #LOGGER.info(f"Received size 3 {pet_pb2.PetRequest.Size..fields_by_name['type'].enum_type.values_by_number[request.size].name}")
+
             pet_to_return = Pet().get_pet("small")
             return pet_pb2.PetResponse(petType=pet_to_return, name="Karo")
         else:
@@ -24,11 +27,13 @@ class PetService(pet_pb2_grpc.PetServicer):
         _print_time()
         return pet_pb2.PetSoundResponse(sound="Vof")
 
+
 def _print_time():
     with grpc.insecure_channel('localhost:50052') as channel:
         stub = datetime_pb2_grpc.DateTimeStub(channel)
         response = stub.GetTime(datetime_pb2.TimeRequest())
         LOGGER.info(f"Received request at {response.time}")
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -37,6 +42,7 @@ def serve():
     server.start()
     LOGGER.info("Starting Pet Service at localhost:50053")
     server.wait_for_termination()
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
