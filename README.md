@@ -14,52 +14,14 @@ Continuous learning project
 
 ## TODO
 
-* Change hardcoded values in Pet server
-* Create a client in the python microservice
+* Add unit tests
+* Randomize names for pets
+* Create a client in the python microservice (date_time_client)
 * Error Handling
 * Split server and client in python pet.py
 * Make pet_client.py interactive
 
 ## Commands
-
-### How to Run the Python Server
-
-Open a new terminal
-
-```bash
-
-cd grpc-basic/python
-
-# Create virtual environment for Python
-python -m venv venv
-
-# Activate virtual environment
-source venv/Scripts/activate # in Windows
-source venv/bin/activate # in Linux
-
-# Install requirements
-pip install -r requirements.txt
-
-# Start pet.py
-python ./pet_server.py
-
-```
-
-### How to Run the Golang Server
-
-Open a new terminal
-
-```bash
-
-cd grpc-basic/golang
-
-# Build golang binary
-go build -o date_time_server
-
-# Start date_time_server
-./date_time_server
-
-```
 
 ### How to Generate the Protos for Python
 
@@ -103,5 +65,67 @@ unzip protoc-3.18.0-win64.zip -d $HOME/.local
 go get -u github.com/golang/protobuf/proto
 go get -u github.com/golang/protobuf/protoc-gen-go
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+```
+
+### How to Run the Golang Server
+
+Open a new terminal
+
+```bash
+
+cd grpc-basic/golang
+
+# Build golang binary
+go build -o date_time_server
+
+# Start date_time_server
+./date_time_server
+
+```
+
+### How to Run the Python Server
+
+Open a new terminal
+
+```bash
+
+cd grpc-basic/python
+
+# Create virtual environment for Python
+python -m venv venv
+
+# Activate virtual environment
+source venv/Scripts/activate # in Windows
+source venv/bin/activate # in Linux
+
+# Install requirements
+pip install -r requirements.txt
+
+# Start pet.py
+python ./pet_server.py
+
+```
+
+### How to run the Python Client
+
+Open a new terminal
+
+```bash
+
+cd grpc-basic/python
+
+# Create virtual environment for Python
+python -m venv venv
+
+# Activate virtual environment
+source venv/Scripts/activate # in Windows
+source venv/bin/activate # in Linux
+
+# Install requirements
+pip install -r requirements.txt
+
+# Start pet.py
+python ./pet_client.py
 
 ```

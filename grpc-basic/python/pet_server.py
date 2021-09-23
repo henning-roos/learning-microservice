@@ -13,15 +13,10 @@ class PetService(pet_pb2_grpc.PetServicer):
 
     def GetPet(self, request, context):
         _print_time()
-        if request.size == pet_pb2.PetRequest.Size.SMALL:
-            LOGGER.info(f"Received size 1 {request.DESCRIPTOR.enum_values_by_name['SMALL'].name}")
-            LOGGER.info(f"Received size 2 {pet_pb2.PetRequest.Size.DESCRIPTOR.enum_types_by_number[request.size].name}")
-            #LOGGER.info(f"Received size 3 {pet_pb2.PetRequest.Size..fields_by_name['type'].enum_type.values_by_number[request.size].name}")
-
-            pet_to_return = Pet().get_pet("small")
-            return pet_pb2.PetResponse(petType=pet_to_return, name="Karo")
-        else:
-            LOGGER.warning(f"Unsupported size: {request.size}!")
+        pet_size = pet_pb2.DESCRIPTOR.message_types_by_name['PetRequest'].fields_by_name['size'].enum_type.values_by_number[request.size].name
+        LOGGER.info(f"Received size: {pet_size}")
+        pet_to_return = Pet().get_pet(pet_size)
+        return pet_pb2.PetResponse(petType=pet_to_return, name="Karo")
 
     def GetPetSound(self, request, context):
         _print_time()
