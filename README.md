@@ -18,7 +18,6 @@ Continuous learning project
 * Create a client in the python microservice
 * Error Handling
 * Split server and client in python pet.py
-* Fix logging in pet.py
 * Make pet_client.py interactive
 
 ## Commands
