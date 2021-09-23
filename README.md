@@ -91,3 +91,18 @@ protoc -I../protos --go_out=. \
 ../protos/*/datetime.proto
 
 ```
+
+#### How to install protoc in Windows (Git bash)
+
+
+```bash
+# Install protoc version 3.18.0 (Currently latest on Github)
+curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.18.0/protoc-3.18.0-win64.zip
+unzip protoc-3.18.0-win64.zip -d $HOME/.local
+
+# Install Golang protoc dependencies
+go get -u github.com/golang/protobuf/proto
+go get -u github.com/golang/protobuf/protoc-gen-go
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+```
