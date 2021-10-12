@@ -15,8 +15,11 @@ def run():
         try:
             response = stub.GetPet(pet_pb2.PetRequest(size=pet_size))
             print(response)
-        except Exception:
-
+        except grpc.RpcError as e:
+            print(e.details())
+            status_code = e.code()
+            print(status_code.name)
+            print(status_code.value)
 
 if __name__ == '__main__':
     run()
