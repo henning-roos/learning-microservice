@@ -10,8 +10,6 @@ class Pet:
     }
 
     pet_names = [
-        "Dog",
-        "Cat",
         "Fido",
         "Hortse",
         "Dumbo",

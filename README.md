@@ -15,7 +15,6 @@ Continuous learning project
 ## TODO
 
 * Add unit tests
-* Randomize names for pets
 * Create a client in the python microservice (date_time_client)
 * Error Handling
 * Split server and client in python pet.py
