@@ -17,8 +17,6 @@ Continuous learning project
 * Add unit tests
 * Create a client in the python microservice (date_time_client)
 * Error Handling
-* Split server and client in python pet.py
-* Make pet_client.py interactive
 
 ## Commands
 

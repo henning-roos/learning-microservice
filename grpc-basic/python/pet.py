@@ -4,7 +4,7 @@ class Pet:
 
     # small, medium, large
     pets = {
-        "small": ["dog", "cat", "bunny"],
+        #"small": ["dog", "cat", "bunny"],
         "medium":["horse", "cow", "pig"],
         "large": ["rhino", "giraffe", "elephant"]
     }
