@@ -1,4 +1,4 @@
-from random import randrange
+from random import choice
 
 class Pet:
 
@@ -8,11 +8,27 @@ class Pet:
         "medium":["horse", "cow", "pig"],
         "large": ["rhino", "giraffe", "elephant"]
     }
+
+    pet_names = [
+        "Dog",
+        "Cat",
+        "Fido",
+        "Hortse",
+        "Dumbo",
+        "Cutie",
+        "Nasse",
+        "Nalle",
+        "Karo",
+        "Kitsuna"
+    ]
+
     def get_pet(self, size):
         """
         Get a pet of the given size.
 
         :type size: string
         """
-        random_index = randrange(len(self.pets[size.lower()]))
-        return self.pets[size.lower()][random_index]
+        pet_type = choice(self.pets[size.lower()])
+        pet_name = choice(self.pet_names)
+
+        return pet_type, pet_name

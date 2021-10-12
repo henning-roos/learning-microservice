@@ -15,8 +15,8 @@ class PetService(pet_pb2_grpc.PetServicer):
         _print_time()
         pet_size = pet_pb2.DESCRIPTOR.message_types_by_name['PetRequest'].fields_by_name['size'].enum_type.values_by_number[request.size].name
         LOGGER.info(f"Received size: {pet_size}")
-        pet_to_return = Pet().get_pet(pet_size)
-        return pet_pb2.PetResponse(petType=pet_to_return, name="Karo")
+        pet_type, pet_name = Pet().get_pet(pet_size)
+        return pet_pb2.PetResponse(petType=pet_type, name=pet_name)
 
     def GetPetSound(self, request, context):
         _print_time()
