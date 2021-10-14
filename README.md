@@ -14,12 +14,8 @@ Continuous learning project
 
 ## TODO
 
-* Uncomment small pets in `pet.py`
-* Handle RPC errors, only printed in `pet_client.py`
 * Add unit tests
 * How do one test `pet_client.py` (using grpcio test framwork?)?
-* Create a client in the python microservice (date_time_client)
-* Error Handling (only handling errors in `pet_client.py`)
 
 ## Commands
 

@@ -3,6 +3,7 @@ import sys
 from interfaces import pet_pb2
 from interfaces import pet_pb2_grpc
 
+
 def run():
     size_list = list(pet_pb2.PetRequest.Size.DESCRIPTOR.values_by_name)
     with grpc.insecure_channel('localhost:50053') as channel:
@@ -21,6 +22,7 @@ def run():
             print(response)
         except grpc.RpcError as e:
             print(f"ERROR: Trying to get pet - {e.details()}")
+
 
 if __name__ == '__main__':
     run()

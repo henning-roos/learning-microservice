@@ -10,3 +10,6 @@ venv
 
 # Go vendor
 *vendor
+
+# Binary
+*date_time_server
