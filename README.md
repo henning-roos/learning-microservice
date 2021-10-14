@@ -15,7 +15,9 @@ Continuous learning project
 ## TODO
 
 * Add unit tests
+* We have tested `pet_server.py` using the gprcio_testing frameworks using and example listed in the file. However the example only showed how to test the server. We want to test the client in some way. Could we use https://grpc.github.io/grpc/python/grpc_testing.html#grpc_testing.Channel as they do in https://github.com/grpc/grpc/blob/master/src/python/grpcio_tests/tests/testing/_client_test.py or is there any better way?
 * How do one test `pet_client.py` (using grpcio test framwork?)?
+* Is unittest the last thing we want to? Maybe continue with tracing?
 
 ## Commands
 
