@@ -1,6 +1,7 @@
 import grpc
 import grpc_testing
 import unittest
+from unittest import mock
 
 import pet
 from pet_server import PetService
@@ -18,7 +19,8 @@ class MyTestCase(unittest.TestCase):
         self.test_server = grpc_testing.server_from_dictionary(
             servicers, grpc_testing.strict_real_time())
 
-    def test_pet_server_run(self):
+    @mock.patch("pet_server._print_time")
+    def test_pet_server_run(self, print_time):
         pet_size = "SMALL"
         request = pet_pb2.PetRequest(size=pet_size)
 
@@ -33,6 +35,7 @@ class MyTestCase(unittest.TestCase):
         self.assertIn(response.petType, pet.Pet.pets["small"])
         self.assertIn(response.name, pet.Pet.pet_names)
         self.assertEqual(code, grpc.StatusCode.OK)
+        print_time.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
