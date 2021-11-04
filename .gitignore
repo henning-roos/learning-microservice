@@ -1,0 +1,15 @@
+# Python cache
+*__pycache__*
+
+# virtual env
+.venv
+venv
+
+# IDE
+.idea
+
+# Go vendor
+*vendor
+
+# Binary
+*date_time_server
