@@ -11,21 +11,14 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
 
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
-
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
-  }
-
-  selectedHero?: Hero;
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero name is: ${hero.name}`);
-  }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
     this.getHeroes();
   }
 
+  getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
 }
