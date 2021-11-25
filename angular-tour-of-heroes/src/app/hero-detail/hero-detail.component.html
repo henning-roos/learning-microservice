@@ -10,12 +10,3 @@
       <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
     </div>
 </div>
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add hero
-  </button>
-</div>
