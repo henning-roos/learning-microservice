@@ -12,3 +12,6 @@ cd angular-tour-of-heroes
 npm install
 ng serve --open
 ```
+
+## Good To know
+* https://docs.npmjs.com/about-semantic-versioning
