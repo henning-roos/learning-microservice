@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from '../pet';
+import { PETS } from '../mock-pets';
 
 @Component({
   selector: 'app-pets',
@@ -8,10 +9,7 @@ import { Pet } from '../pet';
 })
 export class PetsComponent implements OnInit {
 
-  pet: Pet = {
-    id: 1,
-    name: "Pricken"
-  };
+  pets = PETS;
 
   constructor() { }
 
