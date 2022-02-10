@@ -16,4 +16,9 @@ export class PetsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectedPet?: Pet;
+  onSelect(pet: Pet): void {
+    this.selectedPet = pet;
+  }
+
 }
