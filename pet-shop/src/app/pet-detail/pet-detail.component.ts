@@ -1,5 +1,8 @@
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { PetService } from '../pet.service';
 import { Pet } from '../pet';
 
 @Component({
@@ -8,11 +11,25 @@ import { Pet } from '../pet';
   styleUrls: ['./pet-detail.component.css']
 })
 export class PetDetailComponent implements OnInit {
-  @Input() pet?: Pet;
+  pet: Pet | undefined;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private petService: PetService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    this.getPet();
   }
 
+  getPet(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.petService.getPet(id)
+      .subscribe(pet => this.pet = pet);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
