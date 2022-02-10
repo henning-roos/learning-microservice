@@ -1,7 +1,6 @@
 # learning-microservice
 Continuous learning project
 
-
 ## Future Ideas
 
 * Learn Angular 
@@ -12,3 +11,4 @@ Continuous learning project
 * Tracing
     * https://github.com/opentracing
     * (Jaeger?)
+
