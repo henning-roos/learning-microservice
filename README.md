@@ -2,8 +2,9 @@
 Continuous learning project
 
 ## TODO
-* Add GRPC client in angular app
+* Add GRPC client in angular app to retrieve pets from python service
 * Error handling
+* Add more views to display pet properties
 
 ### How to Generate the Protos for Angular
 ```bash
@@ -44,7 +45,7 @@ python ./pet_server.py
 
 ## Future Ideas
 
-* Learn Angular 
+* Learn Angular
     * Both frontend and backend?
     * https://angular.io/
     * https://material.angular.io/
