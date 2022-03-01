@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pet;
+
+service Pet {
+    rpc GetPet(PetRequest) returns (PetResponse){}
+    rpc GetPetSound(PetSoundRequest) returns (PetSoundResponse) {}
+}
+
+message PetRequest {
+    enum Size {
+        SMALL = 0;
+        MEDIUM = 1;
+        LARGE = 2;
+    }
+    Size size = 1;
+}
+
+message PetResponse {
+    string petType = 1;
+    string name = 2;
+}
+
+message PetSoundRequest {
+    string petType = 1;
+}
+
+message PetSoundResponse {
+    string sound = 1;
+}
