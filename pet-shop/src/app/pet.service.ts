@@ -3,41 +3,29 @@ import { Observable, of } from 'rxjs';
 import { Pet } from './pet';
 import { PETS } from './mock-pets';
 import { MessageService } from './message.service';
-import { PetClient } from 'src/interfaces/pet.pbsc';
-import { GRPC_PET_CLIENT_SETTINGS } from 'src/interfaces/pet.pbconf';
-import { GrpcHandler, GRPC_CLIENT_FACTORY } from '@ngx-grpc/core';
-import { PetSoundRequest, PetSoundResponse } from 'src/interfaces/pet.pb';
+import { PetClient } from '../interfaces/pet.pbsc';
+import { PetSoundRequest } from '../interfaces/pet.pb';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
+  sound: any;
 
   constructor(
     private messageService: MessageService,
-    private handler: GrpcHandler
+    private client: PetClient
   ) { }
 
-  const client = new PetClient();
-
-  getPetSound(): Observable<PetSoundResponse> {
-    var sounds = of(PetSoundResponse);
-    this.client.getPetSound(new PetSoundRequest()).subscribe(sounds => this.sounds = sounds);;
-    //TODO: how to return stuff to component?
+  getPetSound() {
+    const req = new PetSoundRequest();
+    req.petType = "cat"
+    const sub = this.client.getPetSound(req).subscribe(res => console.log(res));
+    setTimeout(() => sub.unsubscribe(), 1000); // this closes connection
   }
 
-  //Copied!
-  // const client = new UsersClient(environment.rpcHost);
-  //   const params = new CMSQuery();
-  //   client.getUsers(params).on('data', (message: User) => {
-  //     const obj = message.toObject();
-  //     console.log(`${obj.name} received`);
-  //     this.users.push(obj);
-  //   }).on('end', () => {
-  //     console.log('End of request');
-  //   });
-
   getPets(): Observable<Pet[]> {
+    this.getPetSound()
     const pets = of(PETS);
     this.messageService.add('PetService: fetched pets');
     return pets;
