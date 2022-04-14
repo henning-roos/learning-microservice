@@ -30,21 +30,16 @@ What to do next:
 * All new pets are generated with a name and a picture.
 * The same picture is never used on multiple pets.
 
+## Install Node
 
-
-### How to Generate the Protos for Angular
-```bash
-cd pet-shop
-
-npm run proto:generate
-```
-
-### How to Generate the Protos for Python
-
-```bash
-python3 -m grpc.tools.protoc -I./protos --python_out=./pet-service/ --grpc_python_out=./pet-service/ $(find ./protos -iname *.proto)
-
-```
+* Download Node from [Downloads](https://nodejs.org/en/download/)
+* Install node and npm for Linux [Installation](https://github.com/nodejs/help/wiki/Installation)
+* Start the Angular application
+    ```bash
+    cd pet-shop
+    npm install
+    ng serve --open
+    ```
 
 ### How to Run the Python Server
 
