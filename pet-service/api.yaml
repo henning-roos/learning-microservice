@@ -1,0 +1,21 @@
+
+/home
+ - no request to backend
+
+/login
+ - (frontend only?) # show username in browser
+
+/dashboard
+ - no request to backend
+
+/pets
+  GET /pets  # get all pets from backend
+
+/pet
+  GET /pets/{id}   # get specific pet
+  PUT /pets/{id}  # change name of pet, choose pet for user
+
+/users
+  GET /users   # show users and which pets they own
+  GET /users/{id}
+  POST /users  # create new users when they log in
