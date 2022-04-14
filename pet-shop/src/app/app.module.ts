@@ -8,8 +8,6 @@ import { PetsComponent } from './pets/pets.component';
 import { PetDetailComponent } from './pet-detail/pet-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { GrpcMessage } from '@ngx-grpc/common';
-import { GrpcLoggerModule } from '@ngx-grpc/core';
 
 @NgModule({
   declarations: [
@@ -22,13 +20,7 @@ import { GrpcLoggerModule } from '@ngx-grpc/core';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    GrpcLoggerModule.forRoot({
-      settings: {
-        requestMapper: (msg: GrpcMessage) => msg.toProtobufJSON(),
-        responseMapper: (msg: GrpcMessage) => msg.toProtobufJSON(),
-      },
-    }),
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

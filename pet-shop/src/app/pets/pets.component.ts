@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Pet } from '../pet';
 import { MessageService } from '../message.service';
 
-import { PetService } from '../pet.service';
-
 @Component({
   selector: 'app-pets',
   templateUrl: './pets.component.html',
@@ -12,7 +10,7 @@ import { PetService } from '../pet.service';
 export class PetsComponent implements OnInit {
 
   pets: Pet[] = [];
-  constructor(private petService: PetService, private messageService: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getPets();
@@ -25,8 +23,6 @@ export class PetsComponent implements OnInit {
   }
 
   getPets(): void {
-    this.petService.getPets()
-      .subscribe(pets => this.pets = pets);
   }
 
 }

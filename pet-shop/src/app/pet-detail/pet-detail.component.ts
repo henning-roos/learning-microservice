@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { PetService } from '../pet.service';
 import { Pet } from '../pet';
 
 @Component({
@@ -15,7 +14,6 @@ export class PetDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private petService: PetService,
     private location: Location
   ) { }
 
@@ -25,8 +23,6 @@ export class PetDetailComponent implements OnInit {
 
   getPet(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.petService.getPet(id)
-      .subscribe(pet => this.pet = pet);
   }
 
   goBack(): void {

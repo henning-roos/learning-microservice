@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PetsComponent } from './pets/pets.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PetDetailComponent } from './pet-detail/pet-detail.component';
-import { GrpcCoreModule } from '@ngx-grpc/core';
-import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -15,11 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
-    GrpcCoreModule.forChild(),
-    GrpcWebClientModule.forChild({
-      settings: { host: 'http://localhost:50053' },
-    })],
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
