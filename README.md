@@ -34,6 +34,10 @@ What to do next:
 
 * Download Node from [Downloads](https://nodejs.org/en/download/)
 * Install node and npm for Linux [Installation](https://github.com/nodejs/help/wiki/Installation)
+* Install Angular CLI
+    ```bash
+    npm install -g @angular/cli
+    ```
 * Start the Angular application
     ```bash
     cd pet-shop
