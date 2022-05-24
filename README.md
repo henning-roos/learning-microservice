@@ -74,4 +74,5 @@ python ./pet_server.py
     * Both frontend and backend?
     * https://angular.io/
     * https://material.angular.io/
-
+* Google Oauth
+    * https://medium.com/@danilrabizo/google-authentication-in-the-angular-application-e86df69be58a

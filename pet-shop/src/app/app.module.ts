@@ -8,6 +8,7 @@ import { PetsComponent } from './pets/pets.component';
 import { PetDetailComponent } from './pet-detail/pet-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     AppRoutingModule
   ],
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: true, //keeps the user signed in
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('156022258347-l0de6oqjnnig25130417uknmjddrn5sh.apps.googleusercontent.com') // your client id
+        }
+      ]
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
